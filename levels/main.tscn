@@ -1,0 +1,46 @@
+[gd_scene format=3 uid="uid://bww6pjak8amgy"]
+
+[ext_resource type="PackedScene" uid="uid://bqg4esq3koqfb" path="res://entities/blocks/block_mesh.tscn" id="1_2262g"]
+[ext_resource type="PackedScene" uid="uid://d365y3olaffmm" path="res://entities/player/player.tscn" id="2_wdj6m"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_2262g"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_wdj6m"]
+sky_material = SubResource("ProceduralSkyMaterial_2262g")
+
+[sub_resource type="Environment" id="Environment_l8qe7"]
+background_mode = 2
+sky = SubResource("Sky_wdj6m")
+tonemap_mode = 2
+glow_enabled = true
+
+[node name="main_test" type="Node3D" unique_id=1610966841]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=869741035]
+environment = SubResource("Environment_l8qe7")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=631988387]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+shadow_enabled = true
+
+[node name="scene" type="Node3D" parent="." unique_id=1837643002]
+
+[node name="MeshInstance3D" parent="scene" unique_id=1833799843 instance=ExtResource("1_2262g")]
+transform = Transform3D(15.840001, 0, 0, 0, 0.27778518, 0, 0, 0, 9.840001, 0, 0, 0)
+
+[node name="MeshInstance3D2" parent="scene" unique_id=2009061542 instance=ExtResource("1_2262g")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.7251983, 0, 2.6506987)
+
+[node name="MeshInstance3D3" parent="scene" unique_id=934924745 instance=ExtResource("1_2262g")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.7251983, 0.9531317, 0.38908553)
+
+[node name="MeshInstance3D4" parent="scene" unique_id=256131686 instance=ExtResource("1_2262g")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.7251983, 2.4191427, -2.1332467)
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1941188924]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.0694184, 8.715882)
+
+[node name="CharacterBody3D" parent="." unique_id=1944710656 instance=ExtResource("2_wdj6m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)

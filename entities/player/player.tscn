@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://d365y3olaffmm"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_sfv1e"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sfv1e"]
+albedo_color = Color(0.0951371, 0.68273234, 0.7054961, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_sfv1e"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_sfv1e"]
+
+[node name="CharacterBody3D" type="CharacterBody3D" unique_id=1944710656]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=25136922]
+shape = SubResource("CapsuleShape3D_sfv1e")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1844559141]
+material_override = SubResource("StandardMaterial3D_sfv1e")
+mesh = SubResource("CapsuleMesh_sfv1e")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="MeshInstance3D" unique_id=961005951]
+transform = Transform3D(0.6411052, 0, 0, 0, 0.22555989, 0, 0, 0, 0.31241748, 0, 0.5137533, 0.46725357)
+mesh = SubResource("BoxMesh_sfv1e")
