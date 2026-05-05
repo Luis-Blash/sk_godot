@@ -16,7 +16,6 @@ func process_movement(direction: Vector3) -> void:
 	_entity.velocity.x = direction.x * speed
 	_entity.velocity.z = direction.z * speed
 	
-	print(direction)
 	if direction.length() > 0.1:
 		#Rotation player
 		var target_angle := atan2(direction.x, direction.z)
