@@ -5,8 +5,6 @@ extends Entity
 @export var camera: Camera3D
 
 var movement: MovementAbility
-var jumping: JumpAbility
-
 
 func _ready() -> void:
 	super()
