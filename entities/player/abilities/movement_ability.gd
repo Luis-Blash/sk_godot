@@ -8,9 +8,6 @@ var _entity: CharacterBody3D
 
 func init(entity: CharacterBody3D) -> void:
 	_entity = entity
-
-func update(delta: float) -> void:
-	pass 
 	
 func process_movement(direction: Vector3) -> void:
 	_entity.velocity.x = direction.x * speed
