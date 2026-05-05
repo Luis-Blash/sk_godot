@@ -1,12 +1,6 @@
 [gd_scene format=3 uid="uid://d365y3olaffmm"]
 
 [ext_resource type="Script" uid="uid://takfwinrrm55" path="res://entities/player/player.gd" id="1_symyc"]
-[ext_resource type="Script" uid="uid://ivuxe0d2wwgp" path="res://entities/base/ability.gd" id="2_sglur"]
-[ext_resource type="Script" uid="uid://dnvujr7roeyru" path="res://entities/player/abilities/movement_ability.gd" id="3_bls4j"]
-
-[sub_resource type="Resource" id="Resource_fkugw"]
-script = ExtResource("3_bls4j")
-metadata/_custom_type_script = "uid://dnvujr7roeyru"
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_sfv1e"]
 
@@ -17,9 +11,9 @@ albedo_color = Color(0.0951371, 0.68273234, 0.7054961, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_sfv1e"]
 
-[node name="Player" type="CharacterBody3D" unique_id=1944710656 groups=["player"]]
+[node name="CharacterBody3D" type="CharacterBody3D" unique_id=1944710656 groups=["player"]]
 script = ExtResource("1_symyc")
-abilities = Array[ExtResource("2_sglur")]([SubResource("Resource_fkugw")])
+abilities = null
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=25136922]
 shape = SubResource("CapsuleShape3D_sfv1e")
