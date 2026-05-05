@@ -2,8 +2,9 @@
 
 [ext_resource type="PackedScene" uid="uid://bqg4esq3koqfb" path="res://entities/blocks/block_mesh.tscn" id="1_2262g"]
 [ext_resource type="PackedScene" uid="uid://d365y3olaffmm" path="res://entities/player/player.tscn" id="2_wdj6m"]
-[ext_resource type="Script" uid="uid://ivuxe0d2wwgp" path="res://entities/base/ability.gd" id="3_l8qe7"]
-[ext_resource type="Script" uid="uid://dnvujr7roeyru" path="res://entities/player/abilities/movement_ability.gd" id="4_m1504"]
+[ext_resource type="Script" uid="uid://ivuxe0d2wwgp" path="res://entities/base/ability.gd" id="3_ifaiv"]
+[ext_resource type="Script" uid="uid://dnvujr7roeyru" path="res://entities/player/abilities/movement_ability.gd" id="4_5k4jt"]
+[ext_resource type="Script" uid="uid://dfe27hmabk4p5" path="res://global/camera/camera.gd" id="5_ifaiv"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_2262g"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -18,8 +19,8 @@ sky = SubResource("Sky_wdj6m")
 tonemap_mode = 2
 glow_enabled = true
 
-[sub_resource type="Resource" id="Resource_ifaiv"]
-script = ExtResource("4_m1504")
+[sub_resource type="Resource" id="Resource_qy63d"]
+script = ExtResource("4_5k4jt")
 metadata/_custom_type_script = "uid://dnvujr7roeyru"
 
 [node name="main_test" type="Node3D" unique_id=1610966841]
@@ -30,6 +31,16 @@ environment = SubResource("Environment_l8qe7")
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=631988387]
 transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
 shadow_enabled = true
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1986761892 node_paths=PackedStringArray("target")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6096525, 5.993793)
+script = ExtResource("5_ifaiv")
+target = NodePath("../CharacterBody3D")
+
+[node name="CharacterBody3D" parent="." unique_id=1944710656 node_paths=PackedStringArray("camera") instance=ExtResource("2_wdj6m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.2312794, 0)
+camera = NodePath("../Camera3D")
+abilities = Array[ExtResource("3_ifaiv")]([SubResource("Resource_qy63d")])
 
 [node name="scene" type="Node3D" parent="." unique_id=1837643002]
 
@@ -44,10 +55,3 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.7251983, 0.9531317, 0.3890
 
 [node name="MeshInstance3D4" parent="scene" unique_id=256131686 instance=ExtResource("1_2262g")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.7251983, 2.4191427, -2.1332467)
-
-[node name="CharacterBody3D" parent="." unique_id=1944710656 instance=ExtResource("2_wdj6m")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
-abilities = Array[ExtResource("3_l8qe7")]([SubResource("Resource_ifaiv")])
-
-[node name="Camera3D" type="Camera3D" parent="." unique_id=1986761892]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6096525, 5.993793)

@@ -9,13 +9,12 @@ func _ready() -> void:
 	for ability in abilities:
 		if ability is MovementAbility:
 			movement = ability
-			movement.set_camera(camera)
 
 func _physics_process(delta: float) -> void:
 	if not movement:
 		return
 		
-	var direction := movement.get_input_direction()
+	var direction := movement.get_input_direction(camera)
 	movement.process_movement(direction)
 	
 	super(delta)
