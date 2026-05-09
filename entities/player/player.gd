@@ -17,7 +17,6 @@ func _physics_process(delta: float) -> void:
 		return
 		
 	velocity.y -= gravity * delta
-		
 	var direction := movement.get_input_direction(camera)
 	movement.process_movement(direction)
 	

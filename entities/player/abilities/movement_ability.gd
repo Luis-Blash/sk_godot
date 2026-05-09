@@ -3,6 +3,7 @@ extends Ability
 
 @export var speed: float = 16.0
 @export var rotation_speed: float = 0.15
+var speed_multiplier: float = 1.0
 
 var _entity: CharacterBody3D
 
@@ -10,8 +11,8 @@ func init(entity: CharacterBody3D) -> void:
 	_entity = entity
 	
 func process_movement(direction: Vector3) -> void:
-	_entity.velocity.x = direction.x * speed
-	_entity.velocity.z = direction.z * speed
+	_entity.velocity.x = direction.x * speed * speed_multiplier  
+	_entity.velocity.z = direction.z * speed * speed_multiplier  
 	
 	if direction.length() > 0.1:
 		#Rotation player

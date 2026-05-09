@@ -4,10 +4,10 @@ extends Ability
 @export var jump_force: float = 15.0
 @export var coyote_time: float = 0.12
 
-var _entity: CharacterBody3D
 var _coyote_timer: float = 0.0
 var _coyote_used: bool = false
 
+var _entity: CharacterBody3D
 func init(entity: CharacterBody3D) -> void:
 	_entity = entity
 
