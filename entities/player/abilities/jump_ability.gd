@@ -13,9 +13,6 @@ func init(entity: CharacterBody3D) -> void:
 
 func update(delta: float) -> void:
 	_update_coyote(delta)
-	
-	if Input.is_action_just_pressed("jump"):
-		jump()
 
 func jump() -> bool:
 	if _can_jump():
