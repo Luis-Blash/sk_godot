@@ -11,7 +11,10 @@ albedo_color = Color(0.0951371, 0.68273234, 0.7054961, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_sfv1e"]
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_symyc"]
+
 [node name="CharacterBody3D" type="CharacterBody3D" unique_id=1944710656 groups=["player"]]
+collision_mask = 6
 script = ExtResource("1_symyc")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=25136922]
@@ -24,3 +27,11 @@ mesh = SubResource("CapsuleMesh_sfv1e")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="MeshInstance3D" unique_id=961005951]
 transform = Transform3D(0.6411052, 0, 0, 0, 0.22555989, 0, 0, 0, 0.31241748, 0, 0.5137533, 0.46725357)
 mesh = SubResource("BoxMesh_sfv1e")
+
+[node name="Area3D" type="Area3D" parent="." unique_id=1811934637]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=1994932612]
+shape = SubResource("BoxShape3D_symyc")

@@ -7,23 +7,23 @@ var current_angle_deg: float = 0.0
 
 # Config camera
 @export var offset: Vector3 = Vector3(0, 4, 6)
-@export var smoothness: float = 0.1
+@export var smoothness: float = 1
 
 
 # Control
 @export var joy_sensitivity: float = 200.0
 
 
-func _ready() -> void:
-	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-	
-
-func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("ui_cancel"):
-		if Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
-			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-		else:
-			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+#func _ready() -> void:
+	#Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	#
+#
+#func _input(event: InputEvent) -> void:
+	#if event.is_action_pressed("ui_cancel"):
+		#if Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
+			#Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+		#else:
+			#Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	
 func _physics_process(delta: float) -> void:
 	if not target:
