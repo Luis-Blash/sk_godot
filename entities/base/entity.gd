@@ -8,7 +8,13 @@ func _ready() -> void:
 		abilities[i] = abilities[i].duplicate()
 		abilities[i].init(self)
 
-func set_speed_multiplier(value: float) -> void:  # <- esto
+func get_ability(type: Variant) -> Ability:
+	for ability in abilities:
+		if is_instance_of(ability, type):
+			return ability
+	return null
+
+func set_speed_multiplier(value: float) -> void:
 	for ability in abilities:
 		if ability is MovementAbility:
 			ability.speed_multiplier = value

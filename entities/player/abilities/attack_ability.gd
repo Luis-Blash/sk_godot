@@ -11,6 +11,7 @@ func init(entity: CharacterBody3D) -> void:
 	_entity = entity
 
 func setup_area() -> void:
+	_area.monitoring = false
 	_area.body_entered.connect(_on_body_entered)
 
 func onAttack() -> void:
