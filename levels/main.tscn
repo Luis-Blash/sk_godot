@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bww6pjak8amgy"]
 
-[ext_resource type="PackedScene" uid="uid://bqg4esq3koqfb" path="res://entities/blocks/block_mesh.tscn" id="1_2262g"]
+[ext_resource type="PackedScene" uid="uid://cv2aowkwnhqpx" path="res://Scene3D/scene_test.tscn" id="2_6et1j"]
 [ext_resource type="PackedScene" uid="uid://d365y3olaffmm" path="res://entities/player/player.tscn" id="2_wdj6m"]
 [ext_resource type="Script" uid="uid://ivuxe0d2wwgp" path="res://entities/base/ability.gd" id="3_ifaiv"]
 [ext_resource type="Script" uid="uid://dnvujr7roeyru" path="res://entities/player/abilities/movement_ability.gd" id="4_5k4jt"]
@@ -40,10 +40,6 @@ metadata/_custom_type_script = "uid://caajuuys0vwcw"
 script = ExtResource("7_6et1j")
 metadata/_custom_type_script = "uid://d212bgvyiuufo"
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_qy63d"]
-
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_6et1j"]
-
 [node name="main_test" type="Node3D" unique_id=1610966841]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=869741035]
@@ -58,32 +54,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6096525, 5.993793)
 script = ExtResource("5_ifaiv")
 target = NodePath("../CharacterBody3D")
 
+[node name="sceneTest" parent="." unique_id=169860940 instance=ExtResource("2_6et1j")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.087402344, 0.4964714, -0.4272995)
+
 [node name="CharacterBody3D" parent="." unique_id=1944710656 node_paths=PackedStringArray("camera") instance=ExtResource("2_wdj6m")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.2312794, 0)
 camera = NodePath("../Camera3D")
 abilities = Array[ExtResource("3_ifaiv")]([SubResource("Resource_qy63d"), SubResource("Resource_6et1j"), SubResource("Resource_etqu2"), SubResource("Resource_jw1n3")])
-
-[node name="scene" type="Node3D" parent="." unique_id=1837643002]
-
-[node name="MeshInstance3D" parent="scene" unique_id=1833799843 instance=ExtResource("1_2262g")]
-transform = Transform3D(34.848003, 0, 0, 0, 0.27778518, 0, 0, 0, 28.536005, 0, 0, 0)
-
-[node name="MeshInstance3D2" parent="scene" unique_id=2009061542 instance=ExtResource("1_2262g")]
-transform = Transform3D(8, 0, 0, 0, 1, 0, 0, 0, 1, -10.309513, 0, 2.6506987)
-
-[node name="MeshInstance3D3" parent="scene" unique_id=934924745 instance=ExtResource("1_2262g")]
-transform = Transform3D(6.7000003, 0, 0, 0, 1, 0, 0, 0, 1, -10.4189625, 0.9531317, 0.38908553)
-
-[node name="MeshInstance3D4" parent="scene" unique_id=256131686 instance=ExtResource("1_2262g")]
-transform = Transform3D(8, 0, 0, 0, 1, 0, 0, 0, 3.3, -10.448845, 2.4191427, -4.0161476)
-
-[node name="Enemy" type="CharacterBody3D" parent="." unique_id=1512765660]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.315392, 1.4492798, -0.3413005)
-collision_layer = 4
-collision_mask = 2
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Enemy" unique_id=393607136]
-shape = SubResource("CapsuleShape3D_qy63d")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Enemy" unique_id=907639944]
-mesh = SubResource("CapsuleMesh_6et1j")

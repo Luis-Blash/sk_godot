@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://cv2aowkwnhqpx"]
+
+[ext_resource type="PackedScene" uid="uid://bxl2odp5dtcq4" path="res://Scene3D/sceneTest.blend" id="1_q8s11"]
+
+[node name="sceneTest" unique_id=2098671634 instance=ExtResource("1_q8s11")]
+
+[node name="StaticBody3D" parent="ground" parent_id_path=PackedInt32Array(1231566462) index="0" unique_id=1825650671]
+collision_layer = 2
+collision_mask = 0
+
+[node name="StaticBody3D" parent="block" parent_id_path=PackedInt32Array(1271826354) index="0" unique_id=1519900897]
+collision_layer = 2
+collision_mask = 0
+
+[node name="StaticBody3D" parent="bossCube" parent_id_path=PackedInt32Array(1917791264) index="0" unique_id=407778405]
+collision_layer = 2
+collision_mask = 0
+
+[node name="StaticBody3D" parent="bossCube1" parent_id_path=PackedInt32Array(715331548) index="0" unique_id=1223075568]
+collision_layer = 2
+collision_mask = 0
+
+[node name="StaticBody3D" parent="bossCube3" parent_id_path=PackedInt32Array(2133644008) index="0" unique_id=273409070]
+collision_layer = 2
+collision_mask = 0
+
+[node name="StaticBody3D" parent="bossCube4" parent_id_path=PackedInt32Array(1976045716) index="0" unique_id=1768303197]
+collision_layer = 2
+collision_mask = 0
