@@ -54,8 +54,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6096525, 5.993793)
 script = ExtResource("5_ifaiv")
 target = NodePath("../CharacterBody3D")
 
-[node name="sceneTest" parent="." unique_id=169860940 instance=ExtResource("2_6et1j")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.087402344, 0.4964714, -0.4272995)
+[node name="sceneTest" parent="." unique_id=2098671634 instance=ExtResource("2_6et1j")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.068902016, 0.5476656, -0.46481133)
 
 [node name="CharacterBody3D" parent="." unique_id=1944710656 node_paths=PackedStringArray("camera") instance=ExtResource("2_wdj6m")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.2312794, 0)

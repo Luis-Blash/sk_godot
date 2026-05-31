@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://brnq63khxt6sj"]
+
+[ext_resource type="PackedScene" uid="uid://dfrie4bkhjm12" path="res://Scene3D/pared1.blend" id="1_0mr7o"]
+
+[node name="pared1" unique_id=982926760 instance=ExtResource("1_0mr7o")]
+
+[node name="StaticBody3D" parent="Cube" parent_id_path=PackedInt32Array(2069551075) index="0" unique_id=1452795588]
+collision_layer = 2
+collision_mask = 0
