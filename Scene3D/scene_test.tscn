@@ -4,26 +4,30 @@
 
 [node name="sceneTest" unique_id=2098671634 instance=ExtResource("1_q8s11")]
 
-[node name="StaticBody3D" parent="ground" parent_id_path=PackedInt32Array(1231566462) index="0" unique_id=1825650671]
+[node name="StaticBody3D" parent="ground" parent_id_path=PackedInt32Array(561375630) index="0" unique_id=1518641454]
 collision_layer = 2
 collision_mask = 0
 
-[node name="StaticBody3D" parent="block" parent_id_path=PackedInt32Array(1271826354) index="0" unique_id=1519900897]
+[node name="StaticBody3D" parent="block" parent_id_path=PackedInt32Array(56225682) index="0" unique_id=1144342665]
 collision_layer = 2
 collision_mask = 0
 
-[node name="StaticBody3D" parent="bossCube" parent_id_path=PackedInt32Array(1917791264) index="0" unique_id=407778405]
+[node name="StaticBody3D" parent="bossCube" parent_id_path=PackedInt32Array(838089521) index="0" unique_id=1083099077]
 collision_layer = 2
 collision_mask = 0
 
-[node name="StaticBody3D" parent="bossCube1" parent_id_path=PackedInt32Array(715331548) index="0" unique_id=1223075568]
+[node name="StaticBody3D" parent="bossCube1" parent_id_path=PackedInt32Array(1206542760) index="0" unique_id=1198815402]
 collision_layer = 2
 collision_mask = 0
 
-[node name="StaticBody3D" parent="bossCube3" parent_id_path=PackedInt32Array(2133644008) index="0" unique_id=273409070]
+[node name="StaticBody3D" parent="bossCube3" parent_id_path=PackedInt32Array(1701346016) index="0" unique_id=1092929332]
 collision_layer = 2
 collision_mask = 0
 
-[node name="StaticBody3D" parent="bossCube4" parent_id_path=PackedInt32Array(1976045716) index="0" unique_id=1768303197]
+[node name="StaticBody3D" parent="bossCube4" parent_id_path=PackedInt32Array(1823412689) index="0" unique_id=617739516]
+collision_layer = 2
+collision_mask = 0
+
+[node name="StaticBody3D" parent="BaseTeleport" parent_id_path=PackedInt32Array(149411039) index="0" unique_id=1682751526]
 collision_layer = 2
 collision_mask = 0
