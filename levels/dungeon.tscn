@@ -1,0 +1,58 @@
+[gd_scene format=3 uid="uid://bdungeon00001"]
+
+[ext_resource type="Script" path="res://levels/dungeon_manager.gd" id="1_mgr"]
+[ext_resource type="PackedScene" uid="uid://broomb4se0001" path="res://levels/rooms/room_base.tscn" id="2_room"]
+[ext_resource type="PackedScene" uid="uid://d365y3olaffmm" path="res://entities/player/player.tscn" id="3_player"]
+[ext_resource type="Script" uid="uid://ivuxe0d2wwgp" path="res://entities/base/ability.gd" id="4_ability"]
+[ext_resource type="Script" uid="uid://dnvujr7roeyru" path="res://entities/player/abilities/movement_ability.gd" id="5_move"]
+[ext_resource type="Script" uid="uid://mwmpeolcqxua" path="res://entities/player/abilities/jump_ability.gd" id="6_jump"]
+[ext_resource type="Script" uid="uid://caajuuys0vwcw" path="res://entities/player/abilities/dash_ability.gd" id="7_dash"]
+[ext_resource type="Script" uid="uid://d212bgvyiuufo" path="res://entities/player/abilities/attack_ability.gd" id="8_attack"]
+[ext_resource type="Script" uid="uid://dfe27hmabk4p5" path="res://global/camera/camera.gd" id="9_cam"]
+
+[sub_resource type="ProceduralSkyMaterial" id="sky_mat"]
+sky_horizon_color = Color(0.6622, 0.6717, 0.6867, 1)
+ground_horizon_color = Color(0.6622, 0.6717, 0.6867, 1)
+
+[sub_resource type="Sky" id="sky"]
+sky_material = SubResource("sky_mat")
+
+[sub_resource type="Environment" id="env"]
+background_mode = 2
+sky = SubResource("sky")
+tonemap_mode = 2
+
+[sub_resource type="Resource" id="res_move"]
+script = ExtResource("5_move")
+
+[sub_resource type="Resource" id="res_jump"]
+script = ExtResource("6_jump")
+
+[sub_resource type="Resource" id="res_dash"]
+script = ExtResource("7_dash")
+
+[sub_resource type="Resource" id="res_attack"]
+script = ExtResource("8_attack")
+
+[node name="Dungeon" type="Node3D"]
+script = ExtResource("1_mgr")
+room_scene = ExtResource("2_room")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("env")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+shadow_enabled = true
+
+[node name="Camera3D" type="Camera3D" parent="." node_paths=PackedStringArray("target")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6, 6)
+script = ExtResource("9_cam")
+target = NodePath("../Player")
+
+[node name="Player" parent="." node_paths=PackedStringArray("camera") instance=ExtResource("3_player")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+camera = NodePath("../Camera3D")
+abilities = Array[ExtResource("4_ability")]([SubResource("res_move"), SubResource("res_jump"), SubResource("res_dash"), SubResource("res_attack")])
+
+[node name="RoomContainer" type="Node3D" parent="."]

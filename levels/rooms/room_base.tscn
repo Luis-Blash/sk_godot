@@ -1,0 +1,178 @@
+[gd_scene load_steps=6 format=3 uid="uid://broomb4se0001"]
+
+[ext_resource type="Script" path="res://levels/rooms/room.gd" id="1_room"]
+
+[sub_resource type="StandardMaterial3D" id="mat_floor"]
+albedo_color = Color(0.3, 0.3, 0.32, 1)
+
+[sub_resource type="StandardMaterial3D" id="mat_wall"]
+albedo_color = Color(0.5, 0.5, 0.55, 1)
+
+[sub_resource type="BoxShape3D" id="shape_ns"]
+size = Vector3(3, 3, 1.5)
+
+[sub_resource type="BoxShape3D" id="shape_ew"]
+size = Vector3(1.5, 3, 3)
+
+[node name="Room" type="Node3D"]
+script = ExtResource("1_room")
+
+[node name="Floor" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, 0)
+use_collision = true
+collision_layer = 2
+collision_mask = 0
+size = Vector3(16, 0.5, 16)
+material = SubResource("mat_floor")
+
+[node name="Walls" type="Node3D" parent="."]
+
+[node name="N_Left" type="CSGBox3D" parent="Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.75, 1.5, -8)
+use_collision = true
+collision_layer = 2
+collision_mask = 0
+size = Vector3(6.5, 3, 0.5)
+material = SubResource("mat_wall")
+
+[node name="N_Right" type="CSGBox3D" parent="Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.75, 1.5, -8)
+use_collision = true
+collision_layer = 2
+collision_mask = 0
+size = Vector3(6.5, 3, 0.5)
+material = SubResource("mat_wall")
+
+[node name="S_Left" type="CSGBox3D" parent="Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.75, 1.5, 8)
+use_collision = true
+collision_layer = 2
+collision_mask = 0
+size = Vector3(6.5, 3, 0.5)
+material = SubResource("mat_wall")
+
+[node name="S_Right" type="CSGBox3D" parent="Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.75, 1.5, 8)
+use_collision = true
+collision_layer = 2
+collision_mask = 0
+size = Vector3(6.5, 3, 0.5)
+material = SubResource("mat_wall")
+
+[node name="E_Left" type="CSGBox3D" parent="Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 1.5, -4.75)
+use_collision = true
+collision_layer = 2
+collision_mask = 0
+size = Vector3(0.5, 3, 6.5)
+material = SubResource("mat_wall")
+
+[node name="E_Right" type="CSGBox3D" parent="Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 1.5, 4.75)
+use_collision = true
+collision_layer = 2
+collision_mask = 0
+size = Vector3(0.5, 3, 6.5)
+material = SubResource("mat_wall")
+
+[node name="W_Left" type="CSGBox3D" parent="Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 1.5, -4.75)
+use_collision = true
+collision_layer = 2
+collision_mask = 0
+size = Vector3(0.5, 3, 6.5)
+material = SubResource("mat_wall")
+
+[node name="W_Right" type="CSGBox3D" parent="Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 1.5, 4.75)
+use_collision = true
+collision_layer = 2
+collision_mask = 0
+size = Vector3(0.5, 3, 6.5)
+material = SubResource("mat_wall")
+
+[node name="Doors" type="Node3D" parent="."]
+
+[node name="DoorN" type="Node3D" parent="Doors"]
+
+[node name="Blocker" type="CSGBox3D" parent="Doors/DoorN"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, -8)
+use_collision = true
+collision_layer = 2
+collision_mask = 0
+size = Vector3(3, 3, 0.5)
+material = SubResource("mat_wall")
+
+[node name="Area3D" type="Area3D" parent="Doors/DoorN"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, -7.5)
+collision_layer = 0
+collision_mask = 1
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Doors/DoorN/Area3D"]
+shape = SubResource("shape_ns")
+
+[node name="Entry" type="Marker3D" parent="Doors/DoorN"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -6)
+
+[node name="DoorS" type="Node3D" parent="Doors"]
+
+[node name="Blocker" type="CSGBox3D" parent="Doors/DoorS"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 8)
+use_collision = true
+collision_layer = 2
+collision_mask = 0
+size = Vector3(3, 3, 0.5)
+material = SubResource("mat_wall")
+
+[node name="Area3D" type="Area3D" parent="Doors/DoorS"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 7.5)
+collision_layer = 0
+collision_mask = 1
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Doors/DoorS/Area3D"]
+shape = SubResource("shape_ns")
+
+[node name="Entry" type="Marker3D" parent="Doors/DoorS"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 6)
+
+[node name="DoorE" type="Node3D" parent="Doors"]
+
+[node name="Blocker" type="CSGBox3D" parent="Doors/DoorE"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 1.5, 0)
+use_collision = true
+collision_layer = 2
+collision_mask = 0
+size = Vector3(0.5, 3, 3)
+material = SubResource("mat_wall")
+
+[node name="Area3D" type="Area3D" parent="Doors/DoorE"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5, 1.5, 0)
+collision_layer = 0
+collision_mask = 1
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Doors/DoorE/Area3D"]
+shape = SubResource("shape_ew")
+
+[node name="Entry" type="Marker3D" parent="Doors/DoorE"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 1, 0)
+
+[node name="DoorW" type="Node3D" parent="Doors"]
+
+[node name="Blocker" type="CSGBox3D" parent="Doors/DoorW"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 1.5, 0)
+use_collision = true
+collision_layer = 2
+collision_mask = 0
+size = Vector3(0.5, 3, 3)
+material = SubResource("mat_wall")
+
+[node name="Area3D" type="Area3D" parent="Doors/DoorW"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.5, 1.5, 0)
+collision_layer = 0
+collision_mask = 1
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Doors/DoorW/Area3D"]
+shape = SubResource("shape_ew")
+
+[node name="Entry" type="Marker3D" parent="Doors/DoorW"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 1, 0)
