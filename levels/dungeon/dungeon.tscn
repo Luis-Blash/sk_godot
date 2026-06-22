@@ -1,0 +1,65 @@
+[gd_scene format=3 uid="uid://rlasxv3yl8uu"]
+
+[ext_resource type="Script" uid="uid://dfe27hmabk4p5" path="res://global/camera/camera.gd" id="1_b571b"]
+[ext_resource type="Script" uid="uid://0ns0enrkvew8" path="res://levels/dungeon/dungeon_manager.gd" id="1_e4w0t"]
+[ext_resource type="PackedScene" uid="uid://d365y3olaffmm" path="res://entities/player/player.tscn" id="2_5jar8"]
+[ext_resource type="PackedScene" uid="uid://cugyupgp71oyh" path="res://levels/rooms/room_base.tscn" id="2_ymkqj"]
+[ext_resource type="Script" uid="uid://ivuxe0d2wwgp" path="res://entities/base/ability.gd" id="3_5jar8"]
+[ext_resource type="Script" uid="uid://dnvujr7roeyru" path="res://entities/player/abilities/movement_ability.gd" id="4_e4w0t"]
+[ext_resource type="Script" uid="uid://mwmpeolcqxua" path="res://entities/player/abilities/jump_ability.gd" id="5_ymkqj"]
+[ext_resource type="Script" uid="uid://caajuuys0vwcw" path="res://entities/player/abilities/dash_ability.gd" id="6_daf8d"]
+[ext_resource type="Script" uid="uid://d212bgvyiuufo" path="res://entities/player/abilities/attack_ability.gd" id="7_mdwuu"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_eu48m"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_wdj6m"]
+sky_material = SubResource("ProceduralSkyMaterial_eu48m")
+
+[sub_resource type="Environment" id="Environment_drm44"]
+background_mode = 2
+background_color = Color(0.79817414, 0.71731627, 0.23297319, 1)
+background_energy_multiplier = 1.17
+sky = SubResource("Sky_wdj6m")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="Resource" id="Resource_fnlyw"]
+script = ExtResource("4_e4w0t")
+metadata/_custom_type_script = "uid://dnvujr7roeyru"
+
+[sub_resource type="Resource" id="Resource_s1gl0"]
+script = ExtResource("5_ymkqj")
+metadata/_custom_type_script = "uid://mwmpeolcqxua"
+
+[sub_resource type="Resource" id="Resource_ed6h1"]
+script = ExtResource("6_daf8d")
+metadata/_custom_type_script = "uid://caajuuys0vwcw"
+
+[sub_resource type="Resource" id="Resource_s6c5h"]
+script = ExtResource("7_mdwuu")
+metadata/_custom_type_script = "uid://d212bgvyiuufo"
+
+[node name="Dungeon" type="Node3D" unique_id=1887279292]
+script = ExtResource("1_e4w0t")
+room_scene = ExtResource("2_ymkqj")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=994709379]
+environment = SubResource("Environment_drm44")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1103345942]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+shadow_enabled = true
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=2111252582 node_paths=PackedStringArray("target")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6096525, 5.993793)
+script = ExtResource("1_b571b")
+target = NodePath("../Player")
+
+[node name="Player" parent="." unique_id=1944710656 node_paths=PackedStringArray("camera") instance=ExtResource("2_5jar8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+camera = NodePath("../Camera3D")
+abilities = Array[ExtResource("3_5jar8")]([SubResource("Resource_fnlyw"), SubResource("Resource_s1gl0"), SubResource("Resource_ed6h1"), SubResource("Resource_s6c5h")])
+
+[node name="RoomContainer" type="Node3D" parent="." unique_id=435776349]

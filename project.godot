@@ -15,13 +15,18 @@ run/main_scene="uid://bww6pjak8amgy"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+GameManager="*uid://cs63m103e4fdv"
+
 [file_customization]
 
 folder_colors={
-"res://Scene3D/": "yellow",
 "res://entities/": "green",
 "res://global/": "purple",
-"res://levels/": "orange"
+"res://levels/": "orange",
+"res://manager/": "red",
+"res://scene3D/": "yellow"
 }
 
 [global_group]

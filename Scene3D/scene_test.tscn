@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cv2aowkwnhqpx"]
 
-[ext_resource type="PackedScene" uid="uid://bxl2odp5dtcq4" path="res://Scene3D/sceneTest.blend" id="1_q8s11"]
+[ext_resource type="PackedScene" uid="uid://bxl2odp5dtcq4" path="res://scene3D/sceneTest.blend" id="1_q8s11"]
 
 [node name="sceneTest" unique_id=2098671634 instance=ExtResource("1_q8s11")]
 

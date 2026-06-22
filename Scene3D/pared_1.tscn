@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://brnq63khxt6sj"]
 
-[ext_resource type="PackedScene" uid="uid://dfrie4bkhjm12" path="res://Scene3D/pared1.blend" id="1_0mr7o"]
+[ext_resource type="PackedScene" uid="uid://dfrie4bkhjm12" path="res://scene3D/pared1.blend" id="1_0mr7o"]
 
 [node name="pared1" unique_id=982926760 instance=ExtResource("1_0mr7o")]
 
