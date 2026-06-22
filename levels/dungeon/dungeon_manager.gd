@@ -2,6 +2,9 @@ extends Node
 
 @export var room_scene: PackedScene
 @export var start_coord := Vector2i(0, 0)
+## Distancia entre centros de salas vecinas. Coincide con el tamaño del Floor
+## (16 x 16) para que los muros y huecos de puerta de salas contiguas encajen.
+@export var room_size: float = 16.0
 
 @onready var player: CharacterBody3D = $Player
 @onready var room_container: Node3D = $RoomContainer
@@ -18,16 +21,28 @@ var map := {
 	Vector2i(2, 1): "jefe",
 }
 
-var current_coord: Vector2i
-var current_room: Room
-var _teleport_locked: bool = false
-
-# Lleva registro de las casillas que ya pisaste al menos una vez.
-var visited: Array[Vector2i] = []
+# Todas las salas instanciadas, indexadas por su coordenada de cuadricula.
+var rooms: Dictionary = {}
 
 func _ready() -> void:
-	_load_room(start_coord, Vector2i.ZERO)
-	
+	_build_dungeon()
+	_place_player_at(start_coord)
+
+## Instancia TODAS las salas del mapa de golpe y las coloca en el mundo.
+func _build_dungeon() -> void:
+	for coord in map:
+		var room: Room = room_scene.instantiate()
+		room_container.add_child(room)
+		room.global_position = _coord_to_world(coord)
+		# Solo se abren las puertas que dan a una sala vecina existente.
+		room.set_open_doors(_open_dirs(coord))
+		rooms[coord] = room
+
+## Convierte una coordenada de cuadricula a posicion de mundo.
+## coord.x -> eje X, coord.y -> eje Z (igual que Directions: NORTH = -Z).
+func _coord_to_world(coord: Vector2i) -> Vector3:
+	return Vector3(coord.x * room_size, 0.0, coord.y * room_size)
+
 ## Devuelve las direcciones donde hay sala vecina (esas puertas se abren).
 func _open_dirs(coord: Vector2i) -> Array:
 	var dirs: Array = []
@@ -36,34 +51,7 @@ func _open_dirs(coord: Vector2i) -> Array:
 			dirs.append(d)
 	return dirs
 
-## came_from = direccion en la que viajo el player (Vector2i.ZERO = inicio, al centro).
-func _load_room(coord: Vector2i, came_from: Vector2i) -> void:
-	if current_room:
-		current_room.queue_free()
-
-	current_room = room_scene.instantiate()
-	room_container.add_child(current_room)
-	var dirs: Array = _open_dirs(coord)
-	current_room.set_open_doors(dirs)
-	current_room.player_entered_door.connect(_on_player_entered_door)
-	current_coord = coord
-	
-	# Colocar al player.
+## Coloca al player en el centro de la sala indicada.
+func _place_player_at(coord: Vector2i) -> void:
 	player.velocity = Vector3.ZERO
-	if came_from == Vector2i.ZERO:
-		player.global_position = Vector3(0, 2, 0)
-	else:
-		# Si viajo al ESTE, llega por la puerta OESTE de la nueva sala (-came_from).
-		player.global_position = current_room.get_entry_point(-came_from)
-
-	# Bloqueo breve para no re-disparar la puerta por la que acaba de llegar.
-	_teleport_locked = true
-	await get_tree().create_timer(0.25).timeout
-	_teleport_locked = false
-	
-func _on_player_entered_door(direction: Vector2i) -> void:
-	if _teleport_locked:
-		return
-	var target: Vector2i = current_coord + direction
-	if map.has(target):
-		_load_room(target, direction)
+	player.global_position = _coord_to_world(coord) + Vector3(0, 2, 0)
