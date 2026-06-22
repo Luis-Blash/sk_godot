@@ -2,7 +2,8 @@
 
 [ext_resource type="PackedScene" uid="uid://cv2aowkwnhqpx" path="res://scene3D/scene_test.tscn" id="2_6et1j"]
 [ext_resource type="PackedScene" uid="uid://d365y3olaffmm" path="res://entities/player/player.tscn" id="2_wdj6m"]
-[ext_resource type="PackedScene" uid="uid://dtwlhqgnqi20q" path="res://entities/objects/teleport_mission.tscn" id="3_etqu2"]
+[ext_resource type="PackedScene" uid="uid://dtwlhqgnqi20q" path="res://entities/teleport/teleport_mission.tscn" id="3_etqu2"]
+[ext_resource type="PackedScene" uid="uid://rlasxv3yl8uu" path="res://levels/dungeon/dungeon.tscn" id="4_jw1n3"]
 [ext_resource type="Script" uid="uid://ivuxe0d2wwgp" path="res://entities/base/ability.gd" id="5_etqu2"]
 [ext_resource type="Script" uid="uid://dfe27hmabk4p5" path="res://global/camera/camera.gd" id="5_ifaiv"]
 [ext_resource type="Script" uid="uid://dnvujr7roeyru" path="res://entities/player/abilities/movement_ability.gd" id="6_jw1n3"]
@@ -60,6 +61,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.068902016, 0.5476656, -0.4
 
 [node name="TeleportMission" parent="." unique_id=1081375393 instance=ExtResource("3_etqu2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.2560973, 2.3948052, -5.777804)
+move_to_scene = ExtResource("4_jw1n3")
 
 [node name="Player" parent="." unique_id=1944710656 node_paths=PackedStringArray("camera") instance=ExtResource("2_wdj6m")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.273366, 0)
