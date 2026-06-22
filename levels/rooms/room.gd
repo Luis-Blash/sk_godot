@@ -1,10 +1,6 @@
 class_name Room
 extends Node3D
 
-## Emitida cuando el player cruza una puerta abierta.
-## escuchará esto para cargar la sala vecina en esa direccion.
-signal player_entered_door(direction: Vector2i)
-
 # Para probar en el editor: marca/desmarca y se aplica al correr la escena.
 @export var north_open: bool = true
 @export var south_open: bool = true
@@ -24,9 +20,6 @@ func _ready() -> void:
 	_apply_door(Directions.SOUTH, south_open)
 	_apply_door(Directions.EAST, east_open)
 	_apply_door(Directions.WEST, west_open)
-	for dir in _doors:
-		var area: Area3D = _doors[dir].get_node("Area3D")
-		area.body_entered.connect(_on_door_body_entered.bind(dir))
 
 ## El DungeonManager llamara esto al cargar la sala, pasandole que lados
 ## tienen vecino. Las puertas sin vecino quedan tapadas con su muro.
@@ -48,7 +41,3 @@ func _apply_door(dir: Vector2i, open: bool) -> void:
 	blocker.use_collision = not open
 	area.monitoring = open
 	shape.disabled = not open
-
-func _on_door_body_entered(body: Node3D, dir: Vector2i) -> void:
-	if body.is_in_group("player"):
-		player_entered_door.emit(dir)
