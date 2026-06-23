@@ -40,7 +40,7 @@ func _generate_map() -> Dictionary:
 	var used_seed: int = rng.seed
 	var generated_map: Dictionary = MapGenerator.generate(total_rooms, treasure_count, rng)
 	print("[Dungeon] seed=%d" % used_seed)
-	print("[Dungeon] map=%s" % generated_map)
+	#print("[Dungeon] map=%s" % generated_map)
 	return generated_map
 
 ## Instancia TODAS las salas del mapa de golpe y las coloca en el mundo.

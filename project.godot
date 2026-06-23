@@ -25,8 +25,7 @@ folder_colors={
 "res://entities/": "green",
 "res://global/": "purple",
 "res://levels/": "orange",
-"res://manager/": "red",
-"res://scene3D/": "yellow"
+"res://manager/": "red"
 }
 
 [global_group]

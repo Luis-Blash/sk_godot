@@ -1,15 +1,15 @@
 [gd_scene format=3 uid="uid://bww6pjak8amgy"]
 
-[ext_resource type="PackedScene" uid="uid://cv2aowkwnhqpx" path="res://scene3D/scene_test.tscn" id="2_6et1j"]
-[ext_resource type="PackedScene" uid="uid://d365y3olaffmm" path="res://entities/player/player.tscn" id="2_wdj6m"]
-[ext_resource type="PackedScene" uid="uid://dtwlhqgnqi20q" path="res://entities/teleport/teleport_mission.tscn" id="3_etqu2"]
-[ext_resource type="PackedScene" uid="uid://rlasxv3yl8uu" path="res://levels/dungeon/dungeon.tscn" id="4_jw1n3"]
-[ext_resource type="Script" uid="uid://ivuxe0d2wwgp" path="res://entities/base/ability.gd" id="5_etqu2"]
-[ext_resource type="Script" uid="uid://dfe27hmabk4p5" path="res://global/camera/camera.gd" id="5_ifaiv"]
-[ext_resource type="Script" uid="uid://dnvujr7roeyru" path="res://entities/player/abilities/movement_ability.gd" id="6_jw1n3"]
-[ext_resource type="Script" uid="uid://mwmpeolcqxua" path="res://entities/player/abilities/jump_ability.gd" id="7_xdh4e"]
-[ext_resource type="Script" uid="uid://caajuuys0vwcw" path="res://entities/player/abilities/dash_ability.gd" id="8_c7dyn"]
-[ext_resource type="Script" uid="uid://d212bgvyiuufo" path="res://entities/player/abilities/attack_ability.gd" id="9_1fput"]
+[ext_resource type="Script" uid="uid://dfe27hmabk4p5" path="res://global/camera/camera.gd" id="1_20bwc"]
+[ext_resource type="PackedScene" uid="uid://cv2aowkwnhqpx" path="res://levels/main/scene_test.tscn" id="2_cpsu2"]
+[ext_resource type="PackedScene" uid="uid://dtwlhqgnqi20q" path="res://entities/teleport/teleport_mission.tscn" id="3_rw7ub"]
+[ext_resource type="PackedScene" uid="uid://rlasxv3yl8uu" path="res://levels/dungeon/dungeon.tscn" id="4_1fdnp"]
+[ext_resource type="PackedScene" uid="uid://d365y3olaffmm" path="res://entities/player/player.tscn" id="5_eec3g"]
+[ext_resource type="Script" uid="uid://ivuxe0d2wwgp" path="res://entities/base/ability.gd" id="6_hn1gb"]
+[ext_resource type="Script" uid="uid://dnvujr7roeyru" path="res://entities/player/abilities/movement_ability.gd" id="7_3lhr6"]
+[ext_resource type="Script" uid="uid://mwmpeolcqxua" path="res://entities/player/abilities/jump_ability.gd" id="8_yh2qj"]
+[ext_resource type="Script" uid="uid://caajuuys0vwcw" path="res://entities/player/abilities/dash_ability.gd" id="9_vged4"]
+[ext_resource type="Script" uid="uid://d212bgvyiuufo" path="res://entities/player/abilities/attack_ability.gd" id="10_u4gi4"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_2262g"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -27,19 +27,19 @@ tonemap_mode = 2
 glow_enabled = true
 
 [sub_resource type="Resource" id="Resource_etqu2"]
-script = ExtResource("6_jw1n3")
+script = ExtResource("7_3lhr6")
 metadata/_custom_type_script = "uid://dnvujr7roeyru"
 
 [sub_resource type="Resource" id="Resource_jw1n3"]
-script = ExtResource("7_xdh4e")
+script = ExtResource("8_yh2qj")
 metadata/_custom_type_script = "uid://mwmpeolcqxua"
 
 [sub_resource type="Resource" id="Resource_xdh4e"]
-script = ExtResource("8_c7dyn")
+script = ExtResource("9_vged4")
 metadata/_custom_type_script = "uid://caajuuys0vwcw"
 
 [sub_resource type="Resource" id="Resource_c7dyn"]
-script = ExtResource("9_1fput")
+script = ExtResource("10_u4gi4")
 metadata/_custom_type_script = "uid://d212bgvyiuufo"
 
 [node name="main_test" type="Node3D" unique_id=1610966841]
@@ -53,17 +53,17 @@ shadow_enabled = true
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=1986761892 node_paths=PackedStringArray("target")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6096525, 5.993793)
-script = ExtResource("5_ifaiv")
+script = ExtResource("1_20bwc")
 target = NodePath("../Player")
 
-[node name="sceneTest" parent="." unique_id=2098671634 instance=ExtResource("2_6et1j")]
+[node name="sceneTest" parent="." unique_id=2098671634 instance=ExtResource("2_cpsu2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.068902016, 0.5476656, -0.46481133)
 
-[node name="TeleportMission" parent="." unique_id=1081375393 instance=ExtResource("3_etqu2")]
+[node name="TeleportMission" parent="." unique_id=1081375393 instance=ExtResource("3_rw7ub")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.2560973, 2.3948052, -5.777804)
-move_to_scene = ExtResource("4_jw1n3")
+move_to_scene = ExtResource("4_1fdnp")
 
-[node name="Player" parent="." unique_id=1944710656 node_paths=PackedStringArray("camera") instance=ExtResource("2_wdj6m")]
+[node name="Player" parent="." unique_id=1944710656 node_paths=PackedStringArray("camera") instance=ExtResource("5_eec3g")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.273366, 0)
 camera = NodePath("../Camera3D")
-abilities = Array[ExtResource("5_etqu2")]([SubResource("Resource_etqu2"), SubResource("Resource_jw1n3"), SubResource("Resource_xdh4e"), SubResource("Resource_c7dyn")])
+abilities = Array[ExtResource("6_hn1gb")]([SubResource("Resource_etqu2"), SubResource("Resource_jw1n3"), SubResource("Resource_xdh4e"), SubResource("Resource_c7dyn")])

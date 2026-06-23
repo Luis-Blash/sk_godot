@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://clagy3utxfxyx"]
 
-[ext_resource type="PackedScene" uid="uid://c1vld3waq12g1" path="res://scene3D/room_base.blend" id="1_6bgur"]
+[ext_resource type="PackedScene" uid="uid://c1vld3waq12g1" path="res://levels/rooms/room_base.blend" id="1_6bgur"]
 
 [node name="room_base" unique_id=2130422805 instance=ExtResource("1_6bgur")]
 

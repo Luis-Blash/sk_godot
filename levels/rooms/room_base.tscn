@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://cugyupgp71oyh"]
 
 [ext_resource type="Script" uid="uid://c4weltu0dpxwp" path="res://levels/rooms/room.gd" id="1_room"]
-[ext_resource type="PackedScene" uid="uid://clagy3utxfxyx" path="res://scene3D/roomScene.tscn" id="2_eyia5"]
+[ext_resource type="PackedScene" uid="uid://clagy3utxfxyx" path="res://levels/rooms/roomScene.tscn" id="2_eyia5"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_qrbdx"]
 size = Vector3(30, 6, 30)
