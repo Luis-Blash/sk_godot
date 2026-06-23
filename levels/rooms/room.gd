@@ -15,11 +15,14 @@ extends Node3D
 	Directions.WEST:  $Doors/DoorW,
 }
 
+@onready var roomArea: Area3D = $roomArea
+
 func _ready() -> void:
 	_apply_door(Directions.NORTH, north_open)
 	_apply_door(Directions.SOUTH, south_open)
 	_apply_door(Directions.EAST, east_open)
 	_apply_door(Directions.WEST, west_open)
+	roomArea.body_entered.connect(_on_body_entered_room)
 
 ## El DungeonManager llamara esto al cargar la sala, pasandole que lados
 ## tienen vecino. Las puertas sin vecino quedan tapadas con su muro.
@@ -30,10 +33,9 @@ func set_open_doors(directions: Array) -> void:
 func _apply_door(dir: Vector2i, open: bool) -> void:
 	var door: Node3D = _doors[dir]
 	var blocker: CSGBox3D = door.get_node("Blocker")
-	var area: Area3D = door.get_node("Area3D")
-	var shape: CollisionShape3D = area.get_node("CollisionShape3D")
-	# Puerta abierta: sin muro tapando + zona de teleport activa.
 	blocker.visible = not open
 	blocker.use_collision = not open
-	area.monitoring = open
-	shape.disabled = not open
+	
+func _on_body_entered_room(body: Node3D) -> void:
+	if body.is_in_group("player"):
+		print("¡El jugador entró!", body)

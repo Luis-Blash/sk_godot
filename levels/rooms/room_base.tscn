@@ -3,17 +3,20 @@
 [ext_resource type="Script" uid="uid://c4weltu0dpxwp" path="res://levels/rooms/room.gd" id="1_room"]
 [ext_resource type="PackedScene" uid="uid://clagy3utxfxyx" path="res://scene3D/roomScene.tscn" id="2_eyia5"]
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_qrbdx"]
+size = Vector3(30, 6, 30)
+
 [sub_resource type="StandardMaterial3D" id="mat_wall"]
 albedo_color = Color(0.5, 0.5, 0.55, 1)
 
-[sub_resource type="BoxShape3D" id="shape_ns"]
-size = Vector3(3, 3, 1.5)
-
-[sub_resource type="BoxShape3D" id="shape_ew"]
-size = Vector3(1.5, 3, 3)
-
 [node name="Room" type="Node3D" unique_id=1496762678]
 script = ExtResource("1_room")
+
+[node name="roomArea" type="Area3D" parent="." unique_id=902957963]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="roomArea" unique_id=691157613]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.25, 0)
+shape = SubResource("BoxShape3D_qrbdx")
 
 [node name="Doors" type="Node3D" parent="." unique_id=180112722]
 
@@ -27,13 +30,6 @@ collision_mask = 0
 size = Vector3(3, 3, 0.5)
 material = SubResource("mat_wall")
 
-[node name="Area3D" type="Area3D" parent="Doors/DoorN" unique_id=831842482]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.5)
-collision_layer = 0
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Doors/DoorN/Area3D" unique_id=974799108]
-shape = SubResource("shape_ns")
-
 [node name="DoorS" type="Node3D" parent="Doors" unique_id=1550865830]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 16)
 
@@ -43,13 +39,6 @@ collision_layer = 2
 collision_mask = 0
 size = Vector3(3, 3, 0.5)
 material = SubResource("mat_wall")
-
-[node name="Area3D" type="Area3D" parent="Doors/DoorS" unique_id=1948609042]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.5)
-collision_layer = 0
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Doors/DoorS/Area3D" unique_id=2141141885]
-shape = SubResource("shape_ns")
 
 [node name="DoorE" type="Node3D" parent="Doors" unique_id=870582837]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 1.5, 0)
@@ -61,13 +50,6 @@ collision_mask = 0
 size = Vector3(0.5, 3, 3)
 material = SubResource("mat_wall")
 
-[node name="Area3D" type="Area3D" parent="Doors/DoorE" unique_id=763281185]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0, 0)
-collision_layer = 0
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Doors/DoorE/Area3D" unique_id=2114285076]
-shape = SubResource("shape_ew")
-
 [node name="DoorW" type="Node3D" parent="Doors" unique_id=1364172070]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16, 1.5, 0)
 
@@ -77,12 +59,5 @@ collision_layer = 2
 collision_mask = 0
 size = Vector3(0.5, 3, 3)
 material = SubResource("mat_wall")
-
-[node name="Area3D" type="Area3D" parent="Doors/DoorW" unique_id=1770971618]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 0)
-collision_layer = 0
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Doors/DoorW/Area3D" unique_id=1582027380]
-shape = SubResource("shape_ew")
 
 [node name="room_base" parent="." unique_id=2130422805 instance=ExtResource("2_eyia5")]
