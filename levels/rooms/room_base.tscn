@@ -18,9 +18,9 @@ script = ExtResource("1_room")
 [node name="Doors" type="Node3D" parent="." unique_id=180112722]
 
 [node name="DoorN" type="Node3D" parent="Doors" unique_id=1380830014]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, -8)
 
 [node name="Blocker" type="CSGBox3D" parent="Doors/DoorN" unique_id=1545142009]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, -8)
 use_collision = true
 collision_layer = 2
 collision_mask = 0
@@ -28,19 +28,16 @@ size = Vector3(3, 3, 0.5)
 material = SubResource("mat_wall")
 
 [node name="Area3D" type="Area3D" parent="Doors/DoorN" unique_id=831842482]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, -7.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.5)
 collision_layer = 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Doors/DoorN/Area3D" unique_id=974799108]
 shape = SubResource("shape_ns")
 
-[node name="Entry" type="Marker3D" parent="Doors/DoorN" unique_id=1393716797]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -6)
-
 [node name="DoorS" type="Node3D" parent="Doors" unique_id=1550865830]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 8)
 
 [node name="Blocker" type="CSGBox3D" parent="Doors/DoorS" unique_id=210719328]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 8)
 use_collision = true
 collision_layer = 2
 collision_mask = 0
@@ -48,19 +45,16 @@ size = Vector3(3, 3, 0.5)
 material = SubResource("mat_wall")
 
 [node name="Area3D" type="Area3D" parent="Doors/DoorS" unique_id=1948609042]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 7.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.5)
 collision_layer = 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Doors/DoorS/Area3D" unique_id=2141141885]
 shape = SubResource("shape_ns")
 
-[node name="Entry" type="Marker3D" parent="Doors/DoorS" unique_id=1507864328]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 6)
-
 [node name="DoorE" type="Node3D" parent="Doors" unique_id=870582837]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 1.5, 0)
 
 [node name="Blocker" type="CSGBox3D" parent="Doors/DoorE" unique_id=1156793219]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 1.5, 0)
 use_collision = true
 collision_layer = 2
 collision_mask = 0
@@ -68,19 +62,16 @@ size = Vector3(0.5, 3, 3)
 material = SubResource("mat_wall")
 
 [node name="Area3D" type="Area3D" parent="Doors/DoorE" unique_id=763281185]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5, 1.5, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0, 0)
 collision_layer = 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Doors/DoorE/Area3D" unique_id=2114285076]
 shape = SubResource("shape_ew")
 
-[node name="Entry" type="Marker3D" parent="Doors/DoorE" unique_id=533872961]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 1, 0)
-
 [node name="DoorW" type="Node3D" parent="Doors" unique_id=1364172070]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 1.5, 0)
 
 [node name="Blocker" type="CSGBox3D" parent="Doors/DoorW" unique_id=734927162]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 1.5, 0)
 use_collision = true
 collision_layer = 2
 collision_mask = 0
@@ -88,13 +79,10 @@ size = Vector3(0.5, 3, 3)
 material = SubResource("mat_wall")
 
 [node name="Area3D" type="Area3D" parent="Doors/DoorW" unique_id=1770971618]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.5, 1.5, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 0)
 collision_layer = 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Doors/DoorW/Area3D" unique_id=1582027380]
 shape = SubResource("shape_ew")
-
-[node name="Entry" type="Marker3D" parent="Doors/DoorW" unique_id=1149780476]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 1, 0)
 
 [node name="room_base" parent="." unique_id=2130422805 instance=ExtResource("2_eyia5")]

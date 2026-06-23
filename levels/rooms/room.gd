@@ -27,10 +27,6 @@ func set_open_doors(directions: Array) -> void:
 	for dir in _doors:
 		_apply_door(dir, directions.has(dir))
 
-## Posicion global donde reaparece el player al entrar por ese lado.
-func get_entry_point(dir: Vector2i) -> Vector3:
-	return _doors[dir].get_node("Entry").global_position
-
 func _apply_door(dir: Vector2i, open: bool) -> void:
 	var door: Node3D = _doors[dir]
 	var blocker: CSGBox3D = door.get_node("Blocker")
