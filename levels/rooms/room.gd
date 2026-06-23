@@ -7,6 +7,9 @@ extends Node3D
 @export var east_open: bool = true
 @export var west_open: bool = true
 
+## Escena del cofre que se instancia en salas de tesoro (chestGodot.tscn).
+@export var chest_scene: PackedScene
+
 
 @onready var _doors: Dictionary = {
 	Directions.NORTH: $Doors/DoorN,
@@ -16,6 +19,9 @@ extends Node3D
 }
 
 @onready var roomArea: Area3D = $roomArea
+@onready var _chest_mark: Marker3D = $Spawn/Mark5
+
+var _chest: Node3D = null
 
 var status: Dictionary = {
 	"visited": false,
@@ -43,10 +49,21 @@ func set_room_type(type: String) -> void:
 	match type:
 		"tesoro":
 			status["hasCofre"] = true
+			_spawn_chest()
 		"jefe":
 			status["hasBoss"] = true
 		"normal":
 			status["hasEnemy"] = randf() < 0.5
+
+## Instancia el cofre en el marcador central (Mark5) y lo deja oculto
+## hasta que el player entre a la sala.
+func _spawn_chest() -> void:
+	if chest_scene == null:
+		return
+	_chest = chest_scene.instantiate()
+	add_child(_chest)
+	_chest.position = _chest_mark.position
+	_chest.visible = false
 
 func _apply_door(dir: Vector2i, open: bool) -> void:
 	var door: Node3D = _doors[dir]
@@ -58,3 +75,5 @@ func _on_body_entered_room(body: Node3D) -> void:
 	if body.is_in_group("player") and status["visited"] == false:
 		status["visited"] = true
 		print("¡El jugador entró!")
+		if _chest != null:
+			_chest.visible = true

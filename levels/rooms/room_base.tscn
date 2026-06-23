@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://c4weltu0dpxwp" path="res://levels/rooms/room.gd" id="1_room"]
 [ext_resource type="PackedScene" uid="uid://clagy3utxfxyx" path="res://levels/rooms/roomScene.tscn" id="2_eyia5"]
+[ext_resource type="PackedScene" uid="uid://cd8is0yb5h6lj" path="res://entities/chest/chestGodot.tscn" id="3_chest"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_qrbdx"]
 size = Vector3(30, 6, 30)
@@ -11,6 +12,7 @@ albedo_color = Color(0.5, 0.5, 0.55, 1)
 
 [node name="Room" type="Node3D" unique_id=1496762678]
 script = ExtResource("1_room")
+chest_scene = ExtResource("3_chest")
 
 [node name="roomArea" type="Area3D" parent="." unique_id=902957963]
 
@@ -59,5 +61,21 @@ collision_layer = 2
 collision_mask = 0
 size = Vector3(0.5, 3, 3)
 material = SubResource("mat_wall")
+
+[node name="Spawn" type="Node3D" parent="." unique_id=2020108791]
+
+[node name="Mark1" type="Marker3D" parent="Spawn" unique_id=2111288243]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, 12)
+
+[node name="Mark2" type="Marker3D" parent="Spawn" unique_id=219429972]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, 12)
+
+[node name="Mark3" type="Marker3D" parent="Spawn" unique_id=682629017]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, -12)
+
+[node name="Mark4" type="Marker3D" parent="Spawn" unique_id=2091840165]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, -12)
+
+[node name="Mark5" type="Marker3D" parent="Spawn" unique_id=2041736735]
 
 [node name="room_base" parent="." unique_id=2130422805 instance=ExtResource("2_eyia5")]

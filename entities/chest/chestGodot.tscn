@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://cd8is0yb5h6lj"]
+
+[ext_resource type="PackedScene" uid="uid://bjdpehxhrk8w1" path="res://entities/chest/chest.tscn" id="1_555tt"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qrbdx"]
+size = Vector3(2, 3, 2)
+
+[node name="chestGodot" type="Node3D" unique_id=636679621]
+
+[node name="chest" parent="." unique_id=747068722 instance=ExtResource("1_555tt")]
+
+[node name="Area3D" type="Area3D" parent="." unique_id=2094825566]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=845631413]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 2)
+shape = SubResource("BoxShape3D_qrbdx")
