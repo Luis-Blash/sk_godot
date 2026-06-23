@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://clagy3utxfxyx"]
+
+[ext_resource type="PackedScene" uid="uid://c1vld3waq12g1" path="res://scene3D/room_base.blend" id="1_6bgur"]
+
+[node name="room_base" unique_id=2130422805 instance=ExtResource("1_6bgur")]
+
+[node name="StaticBody3D" parent="Floor" parent_id_path=PackedInt32Array(848365934) index="0" unique_id=527717677]
+collision_layer = 2
+collision_mask = 0
+
+[node name="StaticBody3D" parent="wall_este" parent_id_path=PackedInt32Array(1891986722) index="0" unique_id=1165905942]
+collision_layer = 2
+collision_mask = 0
+
+[node name="StaticBody3D" parent="wall_norte" parent_id_path=PackedInt32Array(542275304) index="0" unique_id=1669828935]
+collision_layer = 2
+collision_mask = 0
+
+[node name="StaticBody3D" parent="wall_sur" parent_id_path=PackedInt32Array(2119927077) index="0" unique_id=453443506]
+collision_layer = 2
+collision_mask = 0
+
+[node name="StaticBody3D" parent="wall_oeste" parent_id_path=PackedInt32Array(1103602422) index="0" unique_id=916601183]
+collision_layer = 2
+collision_mask = 0
