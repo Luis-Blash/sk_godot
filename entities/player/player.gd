@@ -4,6 +4,7 @@ extends Entity
 @export var gravity: float = 55.0
 @export var camera: Camera3D
 @onready var areaAttack: Area3D = $Area3D
+@onready var meshVisualAttack: MeshInstance3D = $Area3D/MeshInstance3D
 
 var movement: MovementAbility
 var attack: AttackAbility
@@ -36,5 +37,12 @@ func _physics_process(delta: float) -> void:
 		dash.stop_dash()
 	if Input.is_action_just_pressed("attack") and attack:
 		attack.onAttack()
+		_flash_attack_mesh(0.2)
 
 	super(delta)
+
+## Muestra el mesh del ataque durante [param duration] segundos.
+func _flash_attack_mesh(duration: float) -> void:
+	meshVisualAttack.visible = true
+	await get_tree().create_timer(duration).timeout
+	meshVisualAttack.visible = false
