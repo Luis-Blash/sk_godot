@@ -6,7 +6,7 @@ var current_angle_deg: float = 0.0
 @export var target: CharacterBody3D
 
 # Config camera
-@export var offset: Vector3 = Vector3(0, 4, 6)
+@export var offset: Vector3 = Vector3(0, 13, 10)
 @export var smoothness: float = 1
 
 

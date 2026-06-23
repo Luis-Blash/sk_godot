@@ -4,7 +4,7 @@ extends Node
 @export var start_coord := Vector2i(0, 0)
 ## Distancia entre centros de salas vecinas. Coincide con el tamaño del Floor
 ## (16 x 16) para que los muros y huecos de puerta de salas contiguas encajen.
-@export var room_size: float = 16.0
+@export var room_size: float = 32.0
 
 @onready var player: CharacterBody3D = $Player
 @onready var room_container: Node3D = $RoomContainer
