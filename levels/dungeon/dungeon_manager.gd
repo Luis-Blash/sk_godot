@@ -1,32 +1,47 @@
 extends Node
 
 @export var room_scene: PackedScene
-@export var start_coord := Vector2i(0, 0)
 ## Distancia entre centros de salas vecinas. Coincide con el tamaño del Floor
 ## (16 x 16) para que los muros y huecos de puerta de salas contiguas encajen.
 @export var room_size: float = 32.0
 
+@export_group("Generacion")
+## Total de salas, incluye inicio y jefe.
+@export var total_rooms: int = 15
+## Cuantas salas de tesoro repartir entre las normales.
+@export var treasure_count: int = 3
+## Pega aqui el seed que aparece en el log para reproducir un mapa concreto.
+## Dejalo en 0 para que cada partida sea aleatoria.
+@export var replay_seed: int = 0
+
 @onready var player: CharacterBody3D = $Player
 @onready var room_container: Node3D = $RoomContainer
 
-# Mapa hecho a mano que replica tu dibujo:
-#   (0,0)Inicio - (1,0)middle - (2,0)Tesoro
-#                     |
-#                 (1,1)sala  - (2,1)JEFE
-var map := {
-	Vector2i(0, 0): "inicio",
-	Vector2i(1, 0): "normal",
-	Vector2i(2, 0): "tesoro",
-	Vector2i(1, 1): "normal",
-	Vector2i(2, 1): "jefe",
-}
+# El mapa { Vector2i: String } lo genera MapGenerator en _ready.
+var map: Dictionary = {}
 
 # Todas las salas instanciadas, indexadas por su coordenada de cuadricula.
 var rooms: Dictionary = {}
 
 func _ready() -> void:
+	map = _generate_map()
 	_build_dungeon()
-	_place_player_at(start_coord)
+	_place_player_at(MapGenerator.START)
+
+## Crea el rng y pide el mapa al generador. Si `replay_seed` != 0 usa ese seed
+## para reproducir un mapa; si es 0 elige uno aleatorio. En ambos casos
+## imprime el seed usado y el mapa generado para poder depurar/replicar.
+func _generate_map() -> Dictionary:
+	var rng := RandomNumberGenerator.new()
+	if replay_seed != 0:
+		rng.seed = replay_seed
+	else:
+		rng.randomize()
+	var used_seed: int = rng.seed
+	var generated_map: Dictionary = MapGenerator.generate(total_rooms, treasure_count, rng)
+	print("[Dungeon] seed=%d" % used_seed)
+	print("[Dungeon] map=%s" % generated_map)
+	return generated_map
 
 ## Instancia TODAS las salas del mapa de golpe y las coloca en el mundo.
 func _build_dungeon() -> void:
@@ -36,6 +51,8 @@ func _build_dungeon() -> void:
 		room.global_position = _coord_to_world(coord)
 		# Solo se abren las puertas que dan a una sala vecina existente.
 		room.set_open_doors(_open_dirs(coord))
+		# El tipo del map define si la sala lleva cofre o enemigos.
+		room.set_room_type(map[coord])
 		rooms[coord] = room
 
 ## Convierte una coordenada de cuadricula a posicion de mundo.

@@ -17,6 +17,13 @@ extends Node3D
 
 @onready var roomArea: Area3D = $roomArea
 
+var status: Dictionary = {
+	"visited": false,
+	"hasCofre": false,
+	"hasEnemy": false,
+	"hasBoss": false
+}
+
 func _ready() -> void:
 	_apply_door(Directions.NORTH, north_open)
 	_apply_door(Directions.SOUTH, south_open)
@@ -30,6 +37,17 @@ func set_open_doors(directions: Array) -> void:
 	for dir in _doors:
 		_apply_door(dir, directions.has(dir))
 
+## El DungeonManager pasa el tipo de sala (del map) para definir su contenido:
+## si lleva cofre o enemigos. Se llama al crear la sala, antes de entrar.
+func set_room_type(type: String) -> void:
+	match type:
+		"tesoro":
+			status["hasCofre"] = true
+		"jefe":
+			status["hasBoss"] = true
+		"normal":
+			status["hasEnemy"] = randf() < 0.5
+
 func _apply_door(dir: Vector2i, open: bool) -> void:
 	var door: Node3D = _doors[dir]
 	var blocker: CSGBox3D = door.get_node("Blocker")
@@ -37,5 +55,6 @@ func _apply_door(dir: Vector2i, open: bool) -> void:
 	blocker.use_collision = not open
 	
 func _on_body_entered_room(body: Node3D) -> void:
-	if body.is_in_group("player"):
-		print("¡El jugador entró!", body)
+	if body.is_in_group("player") and status["visited"] == false:
+		status["visited"] = true
+		print("¡El jugador entró!")
