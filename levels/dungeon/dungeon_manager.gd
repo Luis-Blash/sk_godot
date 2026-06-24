@@ -20,9 +20,6 @@ extends Node
 # El mapa { Vector2i: String } lo genera MapGenerator en _ready.
 var map: Dictionary = {}
 
-# Todas las salas instanciadas, indexadas por su coordenada de cuadricula.
-var rooms: Dictionary = {}
-
 func _ready() -> void:
 	map = _generate_map()
 	_build_dungeon()
@@ -40,7 +37,6 @@ func _generate_map() -> Dictionary:
 	var used_seed: int = rng.seed
 	var generated_map: Dictionary = MapGenerator.generate(total_rooms, treasure_count, rng)
 	print("[Dungeon] seed=%d" % used_seed)
-	#print("[Dungeon] map=%s" % generated_map)
 	return generated_map
 
 ## Instancia TODAS las salas del mapa de golpe y las coloca en el mundo.
@@ -53,7 +49,6 @@ func _build_dungeon() -> void:
 		room.set_open_doors(_open_dirs(coord))
 		# El tipo del map define si la sala lleva cofre o enemigos.
 		room.set_room_type(map[coord])
-		rooms[coord] = room
 
 ## Convierte una coordenada de cuadricula a posicion de mundo.
 ## coord.x -> eje X, coord.y -> eje Z (igual que Directions: NORTH = -Z).
