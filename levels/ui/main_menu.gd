@@ -29,6 +29,7 @@ func _ready() -> void:
 	_check_fullscreen.button_pressed = DisplayServer.window_get_mode() == DisplayServer.WINDOW_MODE_FULLSCREEN
 	_check_fullscreen.toggled.connect(_on_fullscreen_toggled)
 	_option_resolution.item_selected.connect(_on_resolution_selected)
+	_button_start.grab_focus()
 
 func _on_start_pressed() -> void:
 	if scene_to_load == null:
@@ -39,10 +40,12 @@ func _on_start_pressed() -> void:
 func _on_options_pressed() -> void:
 	_main_panel.visible = false
 	_options_panel.visible = true
+	_option_resolution.grab_focus()
 
 func _on_back_pressed() -> void:
 	_options_panel.visible = false
 	_main_panel.visible = true
+	_button_options.grab_focus()
 
 func _on_exit_pressed() -> void:
 	get_tree().quit()
