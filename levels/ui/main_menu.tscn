@@ -42,3 +42,41 @@ text = "Opciones"
 custom_minimum_size = Vector2(220, 50)
 layout_mode = 2
 text = "Salir"
+
+[node name="PanelOptions" type="Control" parent="." unique_id=881097840]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxOptions" type="VBoxContainer" parent="PanelOptions" unique_id=1421031787]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 24
+
+[node name="option_resolution" type="OptionButton" parent="PanelOptions/VBoxOptions" unique_id=1356080416]
+custom_minimum_size = Vector2(220, 50)
+layout_mode = 2
+
+[node name="check_fullscreen" type="CheckBox" parent="PanelOptions/VBoxOptions" unique_id=1196952052]
+custom_minimum_size = Vector2(220, 50)
+layout_mode = 2
+text = "Pantalla Completa"
+
+[node name="btn_back" type="Button" parent="PanelOptions/VBoxOptions" unique_id=1548045248]
+custom_minimum_size = Vector2(220, 50)
+layout_mode = 2
+text = "Regresar"
