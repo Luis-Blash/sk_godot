@@ -1,0 +1,41 @@
+[gd_scene format=3 uid="uid://dyhgvv7teshee"]
+
+[ext_resource type="Script" uid="uid://cwrrr5ncrm3h1" path="res://ui/panel_options/panel_options.gd" id="1_options"]
+
+[node name="PanelOptions" type="Control" unique_id=903414550]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_options")
+
+[node name="VBoxOptions" type="VBoxContainer" parent="." unique_id=1699321598]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 24
+
+[node name="option_resolution" type="OptionButton" parent="VBoxOptions" unique_id=580169598]
+custom_minimum_size = Vector2(220, 50)
+layout_mode = 2
+
+[node name="check_fullscreen" type="CheckBox" parent="VBoxOptions" unique_id=201125500]
+custom_minimum_size = Vector2(220, 50)
+layout_mode = 2
+text = "Pantalla Completa"
+
+[node name="btn_back" type="Button" parent="VBoxOptions" unique_id=1255308746]
+custom_minimum_size = Vector2(220, 50)
+layout_mode = 2
+text = "Regresar"

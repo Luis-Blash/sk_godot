@@ -9,6 +9,7 @@
 [ext_resource type="Script" uid="uid://mwmpeolcqxua" path="res://entities/player/abilities/jump_ability.gd" id="5_ymkqj"]
 [ext_resource type="Script" uid="uid://caajuuys0vwcw" path="res://entities/player/abilities/dash_ability.gd" id="6_daf8d"]
 [ext_resource type="Script" uid="uid://d212bgvyiuufo" path="res://entities/player/abilities/attack_ability.gd" id="7_mdwuu"]
+[ext_resource type="PackedScene" uid="uid://b0cpk0w4o7gvh" path="res://ui/menu/pause_menu.tscn" id="10_daf8d"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_eu48m"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -63,3 +64,6 @@ camera = NodePath("../Camera3D")
 abilities = Array[ExtResource("3_5jar8")]([SubResource("Resource_fnlyw"), SubResource("Resource_s1gl0"), SubResource("Resource_ed6h1"), SubResource("Resource_s6c5h")])
 
 [node name="RoomContainer" type="Node3D" parent="." unique_id=435776349]
+
+[node name="pauseMenu" parent="." unique_id=427963072 instance=ExtResource("10_daf8d")]
+visible = false

@@ -10,6 +10,7 @@
 [ext_resource type="Script" uid="uid://mwmpeolcqxua" path="res://entities/player/abilities/jump_ability.gd" id="8_yh2qj"]
 [ext_resource type="Script" uid="uid://caajuuys0vwcw" path="res://entities/player/abilities/dash_ability.gd" id="9_vged4"]
 [ext_resource type="Script" uid="uid://d212bgvyiuufo" path="res://entities/player/abilities/attack_ability.gd" id="10_u4gi4"]
+[ext_resource type="PackedScene" uid="uid://b0cpk0w4o7gvh" path="res://ui/menu/pause_menu.tscn" id="11_cpsu2"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_2262g"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -67,3 +68,6 @@ move_to_scene = ExtResource("4_1fdnp")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.273366, 0)
 camera = NodePath("../Camera3D")
 abilities = Array[ExtResource("6_hn1gb")]([SubResource("Resource_etqu2"), SubResource("Resource_jw1n3"), SubResource("Resource_xdh4e"), SubResource("Resource_c7dyn")])
+
+[node name="pauseMenu" parent="." unique_id=427963072 instance=ExtResource("11_cpsu2")]
+visible = false
