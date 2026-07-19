@@ -1,0 +1,55 @@
+[gd_scene format=3 uid="uid://d134lwu7ns2ey"]
+
+[ext_resource type="Script" uid="uid://de5bhtbp3oahk" path="res://ui/splash/control_suggestion/control_suggestion.gd" id="1_et55l"]
+[ext_resource type="Texture2D" uid="uid://cpwf524dv5myk" path="res://ui/splash/assest/contro_xbox_beta.png" id="1_ptvr6"]
+[ext_resource type="PackedScene" uid="uid://brqlv7rbu0rmo" path="res://ui/main/main_menu.tscn" id="2_xw4ik"]
+
+[node name="control_suggestion" type="Control" unique_id=352296805]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_et55l")
+scene = ExtResource("2_xw4ik")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=300116476]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=987015720]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 16
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer" unique_id=907820927]
+layout_mode = 2
+texture = ExtResource("1_ptvr6")
+expand_mode = 4
+
+[node name="Label" type="Label" parent="VBoxContainer" unique_id=310338365]
+layout_mode = 2
+text = "Se recomienda usar control"
+horizontal_alignment = 1
+
+[node name="btn_accept" type="Button" parent="VBoxContainer" unique_id=1203194172]
+visible = false
+custom_minimum_size = Vector2(220, 50)
+layout_mode = 2
+text = "Aceptar"

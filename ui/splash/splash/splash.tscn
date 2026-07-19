@@ -1,0 +1,48 @@
+[gd_scene format=3 uid="uid://be8f4oob2n1g0"]
+
+[ext_resource type="Script" uid="uid://erycpbyxeik0" path="res://ui/splash/splash/splash.gd" id="1_muqnq"]
+[ext_resource type="PackedScene" uid="uid://d134lwu7ns2ey" path="res://ui/splash/control_suggestion/control_suggestion.tscn" id="2_sd7dl"]
+[ext_resource type="Texture2D" uid="uid://debjgseoiilvl" path="res://icon.svg" id="2_y476p"]
+
+[node name="Splash" type="Control" unique_id=2045142017]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_muqnq")
+scene = ExtResource("2_sd7dl")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=487155358]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1449285355]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 24
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer" unique_id=1688051702]
+layout_mode = 2
+texture = ExtResource("2_y476p")
+
+[node name="Label" type="Label" parent="VBoxContainer" unique_id=720411680]
+layout_mode = 2
+text = "Godot BETA"
+horizontal_alignment = 1
